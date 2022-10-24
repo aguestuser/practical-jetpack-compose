@@ -3,12 +3,12 @@ package com.example.settingstutorial.composables
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
@@ -16,6 +16,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.settingstutorial.R
+import com.example.settingstutorial.composables.Tags.TAG_TOGGLE_ITEM
 import com.example.settingstutorial.ui.theme.SettingsTutorialTheme
 
 @Composable
@@ -33,6 +34,7 @@ fun NotificationSettingsItem(
         Row(
             modifier =
             modifier
+                .testTag(TAG_TOGGLE_ITEM)
                 .toggleable(
                     value = checked,
                     onValueChange = onCheckChanged,

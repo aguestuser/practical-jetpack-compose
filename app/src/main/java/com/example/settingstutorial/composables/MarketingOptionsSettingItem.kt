@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -15,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.settingstutorial.MarketingOption
 import com.example.settingstutorial.R
+import com.example.settingstutorial.composables.Tags.TAG_MARKETING_OPTION
 import com.example.settingstutorial.ui.theme.SettingsTutorialTheme
 
 @Composable
@@ -35,6 +37,7 @@ fun MarketingOptionsSettingItem(
                 Row(
                     modifier =
                         Modifier.fillMaxWidth()
+                            .testTag(TAG_MARKETING_OPTION + idx)
                             .selectable(
                                 selected = selectedOption.id == idx,
                                 role = Role.RadioButton,

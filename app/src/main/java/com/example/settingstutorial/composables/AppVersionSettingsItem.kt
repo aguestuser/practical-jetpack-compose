@@ -19,7 +19,7 @@ fun AppVersionSettingsItem(
     modifier: Modifier = Modifier,
     appVersion: String,
 ) {
-    val title = stringResource(id = R.string.app_version)
+    val title = stringResource(id = R.string.setting_app_version_title)
     SettingsItem(modifier = modifier) {
         Row(
             modifier = Modifier.padding(16.dp).semantics(mergeDescendants = true){},

@@ -72,7 +72,7 @@ fun Settings() {
             SectionSpacer()
             AppVersionSettingsItem(
                 modifier = Modifier.fillMaxWidth(),
-                appVersion = stringResource(id = R.string.setting_option_theme)
+                appVersion = stringResource(id = R.string.setting_app_version)
             )
             Divider()
         }

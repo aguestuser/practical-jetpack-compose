@@ -8,11 +8,14 @@ import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.example.settingstutorial.R
+import com.example.settingstutorial.composables.Tags.TAG_SELECT_THEME
+import com.example.settingstutorial.composables.Tags.TAG_THEME_OPTION
 import com.example.settingstutorial.ui.theme.SettingsTutorialTheme
 import com.example.settingstutorial.ui.theme.Theme
 
@@ -31,6 +34,7 @@ fun ThemeSettingItem(
                         onClick = { isExpanded = !isExpanded }
                     )
                     .padding(16.dp)
+                    .testTag(TAG_SELECT_THEME)
         ) {
             Text(
                 modifier = Modifier.weight(1f),
@@ -44,13 +48,15 @@ fun ThemeSettingItem(
             onDismissRequest = { isExpanded = false }
         ) {
             Theme.values().forEach { theme ->
+                val themeLabel = stringResource(id = theme.label)
                 DropdownMenuItem(
                     onClick = {
                         onOptionSelected(theme)
                         isExpanded = false
-                    }
+                    },
+                    modifier = Modifier.testTag(TAG_THEME_OPTION + themeLabel),
                 ) {
-                    Text(text = stringResource(id = theme.label))
+                    Text(text = themeLabel)
                 }
             }
         }

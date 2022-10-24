@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
@@ -16,6 +17,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.settingstutorial.R
+import com.example.settingstutorial.composables.Tags.TAG_CHECK_ITEM
 import com.example.settingstutorial.ui.theme.SettingsTutorialTheme
 
 @Composable
@@ -31,7 +33,9 @@ fun HintSetttingsItem(
     SettingsItem(modifier = modifier) {
         Row(
             modifier =
-                Modifier.toggleable(
+                Modifier
+                    .testTag(TAG_CHECK_ITEM)
+                    .toggleable(
                         value = checked,
                         onValueChange = onShowHintsToggled,
                         role = Role.Checkbox

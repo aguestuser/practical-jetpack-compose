@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">SettingsTutorial</string>
-    <string name="app_version">App Version</string>
     <string name="cd_go_back">Go back to previous screen</string>
     <string name="cd_hints_enabled">Hints Enabled</string>
     <string name="cd_notifications_disabled">Notifications Disabled</string>
@@ -9,6 +8,7 @@
     <string name="cd_select_theme">Select theme</string>
     <string name="hints_disabled">Hints Disabled</string>
     <string name="setting_app_version">v 1.3.12</string>
+    <string name="setting_app_version_title">App Version</string>
     <string name="setting_enable_notifications">Enable Notifications</string>
     <string name="setting_manage_subscription">Manage Subscriptions</string>
     <string name="setting_option_marketing">Receive marketing emails?</string>
