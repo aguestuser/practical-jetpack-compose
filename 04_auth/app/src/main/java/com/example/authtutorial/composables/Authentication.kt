@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.authtutorial.AuthenticationEvent
 import com.example.authtutorial.AuthenticationState
@@ -37,7 +38,20 @@ fun AuthenticationContent(
         if (state.isLoading) {
             CircularProgressIndicator()
         } else {
-            AuthenticationForm(authenticationMode = state.authenticationMode)
+            AuthenticationForm(
+                authenticationMode = state.authenticationMode,
+                email = state.email,
+                onEmailChanged = { handleEvent(AuthenticationEvent.EmailChanged(it)) },
+                password = state.password,
+                onPasswordChanged = { handleEvent(AuthenticationEvent.PasswordChanged(it))},
+                onAuthenticate = { handleEvent(AuthenticationEvent.AuthenticationRequested)}
+            )
         }
     }
+}
+
+@Preview(widthDp = 400, showBackground = true)
+@Composable
+fun AuthenticationPreview() {
+    AuthTutorialTheme { Authentication() }
 }
