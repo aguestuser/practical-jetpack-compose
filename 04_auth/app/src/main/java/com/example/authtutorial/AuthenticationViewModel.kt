@@ -23,6 +23,7 @@ class AuthenticationViewModel : ViewModel() {
     }
 
     private fun authenticate() {
+        if (!uiState.value.isFormValid()) return
         uiState.update { it.copy(isLoading = true) }
         // make some network call
         viewModelScope.launch(Dispatchers.IO) {

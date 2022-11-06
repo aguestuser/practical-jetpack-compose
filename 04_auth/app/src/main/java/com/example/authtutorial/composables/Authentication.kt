@@ -40,6 +40,7 @@ fun AuthenticationContent(
         } else {
             AuthenticationForm(
                 authenticationMode = state.authenticationMode,
+                canAuthenticate = state.isFormValid(),
                 email = state.email,
                 password = state.password,
                 satisfiedPasswordRequirements = state.satisfiedPasswordRequirements,

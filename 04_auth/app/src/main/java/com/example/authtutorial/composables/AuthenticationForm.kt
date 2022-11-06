@@ -19,6 +19,7 @@ import com.example.authtutorial.ui.theme.AuthTutorialTheme
 fun AuthenticationForm(
     modifier: Modifier = Modifier,
     authenticationMode: AuthenticationMode,
+    canAuthenticate: Boolean,
     email: String?,
     password: String?,
     satisfiedPasswordRequirements: List<PasswordRequirement>,
@@ -55,10 +56,18 @@ fun AuthenticationForm(
                     onPasswordChanged = onPasswordChanged,
                     onDoneClicked = onAuthenticate,
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+
+                Spacer(modifier = Modifier.height(12.dp))
                 AnimatedVisibility(visible = authenticationMode == AuthenticationMode.SIGN_UP) {
                     PasswordRequirements(satisfiedRequirements = satisfiedPasswordRequirements)
                 }
+                Spacer(modifier = Modifier.height(12.dp))
+
+                AuthenticationButton(
+                    authenticationMode = authenticationMode,
+                    canAuthenticate = canAuthenticate,
+                    onAuthenticate = onAuthenticate,
+                )
             }
         }
     }
@@ -74,6 +83,7 @@ fun AuthenticationFormThePreview(
     AuthTutorialTheme {
         AuthenticationForm(
             authenticationMode = authenticationMode,
+            canAuthenticate = authenticationMode == AuthenticationMode.SIGN_IN,
             email = email,
             password = password,
             onAuthenticate = {},

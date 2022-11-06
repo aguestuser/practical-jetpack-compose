@@ -21,5 +21,6 @@
     <string name="cd_hide_password">Hide Password</string>
     <string name="password_requirement_satisfied">%s: satisfied</string>
     <string name="password_requirement_needed">%s: needed</string>
-
+    <string name="action_sign_up">Sign Up</string>
+    <string name="action_sign_in">Sign In</string>
 </resources>
