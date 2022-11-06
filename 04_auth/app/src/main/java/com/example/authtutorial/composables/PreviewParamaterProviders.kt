@@ -10,3 +10,7 @@ class AuthModeProvider : PreviewParameterProvider<AuthenticationMode> {
             AuthenticationMode.SIGN_IN,
         )
 }
+
+class BooleanProvider : PreviewParameterProvider<Boolean> {
+    override val values: Sequence<Boolean> = sequenceOf(true, false)
+}

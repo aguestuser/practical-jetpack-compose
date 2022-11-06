@@ -69,7 +69,7 @@ class AuthenticationViewModel : ViewModel() {
         uiState.update {
             it.copy(
                 password = password,
-                passwordRequirements = requirements,
+                satisfiedPasswordRequirements = requirements,
             )
         }
     }

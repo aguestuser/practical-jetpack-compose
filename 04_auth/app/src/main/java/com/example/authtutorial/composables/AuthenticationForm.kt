@@ -1,5 +1,6 @@
 package com.example.authtutorial.composables
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.runtime.*
@@ -11,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.example.authtutorial.AuthenticationMode
+import com.example.authtutorial.PasswordRequirement
 import com.example.authtutorial.ui.theme.AuthTutorialTheme
 
 @Composable
@@ -18,10 +20,11 @@ fun AuthenticationForm(
     modifier: Modifier = Modifier,
     authenticationMode: AuthenticationMode,
     email: String?,
-    onEmailChanged: (String) -> Unit,
     password: String?,
-    onPasswordChanged: (String) -> Unit,
+    satisfiedPasswordRequirements: List<PasswordRequirement>,
     onAuthenticate: () -> Unit,
+    onEmailChanged: (String) -> Unit,
+    onPasswordChanged: (String) -> Unit,
 ) {
     Column(
         modifier = modifier,
@@ -45,18 +48,23 @@ fun AuthenticationForm(
                     onEmailChanged = onEmailChanged,
                     onNextClicked = { passwordFocusRequester.requestFocus() }
                 )
+                Spacer(modifier = Modifier.height(16.dp))
                 PasswordInput(
                     modifier = Modifier.fillMaxWidth().focusRequester(passwordFocusRequester),
                     password = password,
                     onPasswordChanged = onPasswordChanged,
                     onDoneClicked = onAuthenticate,
                 )
+                Spacer(modifier = Modifier.height(16.dp))
+                AnimatedVisibility(visible = authenticationMode == AuthenticationMode.SIGN_UP) {
+                    PasswordRequirements(satisfiedRequirements = satisfiedPasswordRequirements)
+                }
             }
         }
     }
 }
 
-@Preview(showBackground = true, widthDp = 400, heightDp = 300)
+@Preview(showBackground = true, widthDp = 400)
 @Composable
 fun AuthenticationFormThePreview(
     @PreviewParameter(AuthModeProvider::class) authenticationMode: AuthenticationMode
@@ -67,10 +75,11 @@ fun AuthenticationFormThePreview(
         AuthenticationForm(
             authenticationMode = authenticationMode,
             email = email,
-            onEmailChanged = { email = it },
             password = password,
-            onPasswordChanged = { password = it },
             onAuthenticate = {},
+            satisfiedPasswordRequirements = listOf(PasswordRequirement.CAPITAL_LETTER),
+            onEmailChanged = { email = it },
+            onPasswordChanged = { password = it },
         )
     }
 }
