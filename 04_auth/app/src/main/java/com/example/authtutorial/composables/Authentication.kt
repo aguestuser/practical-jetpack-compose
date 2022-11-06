@@ -47,6 +47,7 @@ fun AuthenticationContent(
                 onAuthenticate = { handleEvent(AuthenticationEvent.AuthenticationRequested)},
                 onEmailChanged = { handleEvent(AuthenticationEvent.EmailChanged(it)) },
                 onPasswordChanged = { handleEvent(AuthenticationEvent.PasswordChanged(it))},
+                onToggleAuthMode = { handleEvent(AuthenticationEvent.ToggleAuthenticationMode) }
             )
         }
     }

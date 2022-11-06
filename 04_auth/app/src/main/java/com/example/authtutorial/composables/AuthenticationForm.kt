@@ -26,6 +26,7 @@ fun AuthenticationForm(
     onAuthenticate: () -> Unit,
     onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
+    onToggleAuthMode: () -> Unit,
 ) {
     Column(
         modifier = modifier,
@@ -70,6 +71,12 @@ fun AuthenticationForm(
                 )
             }
         }
+        Spacer(modifier = Modifier.weight(1f))
+        AuthenticationModeToggle(
+            modifier = Modifier.fillMaxWidth(),
+            authenticationMode = authenticationMode,
+            onToggleAuthMode = onToggleAuthMode,
+        )
     }
 }
 
@@ -90,6 +97,7 @@ fun AuthenticationFormThePreview(
             satisfiedPasswordRequirements = listOf(PasswordRequirement.CAPITAL_LETTER),
             onEmailChanged = { email = it },
             onPasswordChanged = { password = it },
+            onToggleAuthMode = {}
         )
     }
 }
