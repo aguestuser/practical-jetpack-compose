@@ -44,11 +44,17 @@ fun AuthenticationContent(
                 email = state.email,
                 password = state.password,
                 satisfiedPasswordRequirements = state.satisfiedPasswordRequirements,
-                onAuthenticate = { handleEvent(AuthenticationEvent.AuthenticationRequested)},
+                onAuthenticate = { handleEvent(AuthenticationEvent.AuthenticationRequested) },
                 onEmailChanged = { handleEvent(AuthenticationEvent.EmailChanged(it)) },
-                onPasswordChanged = { handleEvent(AuthenticationEvent.PasswordChanged(it))},
+                onPasswordChanged = { handleEvent(AuthenticationEvent.PasswordChanged(it)) },
                 onToggleAuthMode = { handleEvent(AuthenticationEvent.ToggleAuthenticationMode) }
             )
+            state.error?.let {
+                ErrorDialog(
+                    error = it,
+                    onDismissError = { handleEvent(AuthenticationEvent.ErrorDismissed) },
+                )
+            }
         }
     }
 }
